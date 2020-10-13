@@ -110,7 +110,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "ClientApp/src/app/Queuer-api.ts"
+      "output": "ClientApp/src/app/queuer-api.ts"
     }
   }
 }

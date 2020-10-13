@@ -1,0 +1,10 @@
+<div>Data from resolve</div>
+{{ tenant | json }}
+
+<div>Data from app state</div>
+{{ appState.tenant.value | json }}
+
+<div>Data from app state async</div>
+<ng-container *ngIf="appState.tenant | async as tenant2">
+  {{ tenant2 | json }}
+</ng-container>
