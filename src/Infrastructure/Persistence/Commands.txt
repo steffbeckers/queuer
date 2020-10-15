@@ -1,0 +1,2 @@
+﻿dotnet ef migrations add "TicketAdded" --project src\Infrastructure --startup-project src\WebUI --output-dir Persistence\Migrations
+dotnet ef migrations remove --project src\Infrastructure

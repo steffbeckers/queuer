@@ -9,6 +9,7 @@ namespace Queuer.Application.Common.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<Tenant> Tenants { get; set; }
+        DbSet<Ticket> Tickets { get; set; }
 
         DbSet<TodoList> TodoLists { get; set; }
         DbSet<TodoItem> TodoItems { get; set; }

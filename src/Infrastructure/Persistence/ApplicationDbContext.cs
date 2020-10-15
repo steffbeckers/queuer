@@ -31,6 +31,7 @@ namespace Queuer.Infrastructure.Persistence
         }
 
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         public DbSet<TodoList> TodoLists { get; set; }
         public DbSet<TodoItem> TodoItems { get; set; }
