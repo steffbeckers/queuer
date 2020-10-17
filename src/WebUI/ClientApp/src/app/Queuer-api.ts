@@ -767,6 +767,7 @@ export class TicketDto implements ITicketDto {
     id?: string;
     number?: number;
     done?: boolean;
+    created?: Date;
     tenantId?: string;
     tenant?: TenantDto2 | undefined;
 
@@ -784,6 +785,7 @@ export class TicketDto implements ITicketDto {
             this.id = _data["id"];
             this.number = _data["number"];
             this.done = _data["done"];
+            this.created = _data["created"] ? new Date(_data["created"].toString()) : <any>undefined;
             this.tenantId = _data["tenantId"];
             this.tenant = _data["tenant"] ? TenantDto2.fromJS(_data["tenant"]) : <any>undefined;
         }
@@ -801,6 +803,7 @@ export class TicketDto implements ITicketDto {
         data["id"] = this.id;
         data["number"] = this.number;
         data["done"] = this.done;
+        data["created"] = this.created ? this.created.toISOString() : <any>undefined;
         data["tenantId"] = this.tenantId;
         data["tenant"] = this.tenant ? this.tenant.toJSON() : <any>undefined;
         return data; 
@@ -811,6 +814,7 @@ export interface ITicketDto {
     id?: string;
     number?: number;
     done?: boolean;
+    created?: Date;
     tenantId?: string;
     tenant?: TenantDto2 | undefined;
 }

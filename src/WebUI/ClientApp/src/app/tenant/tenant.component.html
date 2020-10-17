@@ -1,5 +1,5 @@
 <ng-container *ngIf="appState.tenant | async as tenant">
-  <h1>{{ tenant.name }}</h1>
+  <h1 [routerLink]="'/' + tenant.slug">{{ tenant.name }}</h1>
   <div *ngIf="tenant.phoneNumber || tenant.email">
     <a *ngIf="tenant.phoneNumber" [href]="'tel:' + tenant.phoneNumber">{{
       tenant.phoneNumber
@@ -9,7 +9,8 @@
       tenant.email
     }}</a>
   </div>
-  <!-- TODO -->
-  <br />
+  <div>
+    <h2>Wachtrij</h2>
+  </div>
   <router-outlet></router-outlet>
 </ng-container>

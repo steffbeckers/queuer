@@ -1,1 +1,13 @@
-{{ ticket | json }}
+<div class="ticket card">
+  <div class="card-body">
+    <h2>Mijn ticket</h2>
+    <h6 class="card-title mb-2 text-muted">
+      {{ ticket.created | date: 'dd/MM HH:mm:ss' }}
+    </h6>
+    <p class="card-text">
+      <span class="ticket-number">
+        {{ ticket.number }}
+      </span>
+    </p>
+  </div>
+</div>

@@ -9,6 +9,7 @@ namespace Queuer.Application.Tickets.Queries.GetTicketByIdQuery
         public Guid Id { get; set; }
         public int Number { get; set; }
         public bool Done { get; set; }
+        public DateTime Created { get; set; }
 
         public Guid TenantId { get; set; }
         public TenantDto Tenant { get; set; }

@@ -1,0 +1,12 @@
+.ticket {
+  max-width: 20rem;
+  margin: 0 auto;
+}
+
+p.card-text {
+  text-align: center;
+}
+
+.ticket-number {
+  font-size: 10rem;
+}
