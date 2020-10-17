@@ -29,7 +29,7 @@ namespace Queuer.Application.Tickets.Commands.RequestTicket
         public async Task<Guid> Handle(RequestTicketCommand request, CancellationToken cancellationToken)
         {
             // Retrieve tenant by tenant ID
-            Tenant tenant = await _context.Tenants.Include(x => x.Tickets.Where(x => !x.Done)).FirstOrDefaultAsync(x => x.Id == request.TenantId);
+            Tenant tenant = await _context.Tenants.Include(x => x.Tickets).FirstOrDefaultAsync(x => x.Id == request.TenantId);
             if (tenant == null)
             {
                 throw new NotFoundException($"Tenant with ID: {tenant.Id.ToString().ToUpper()} not found.");
@@ -39,9 +39,17 @@ namespace Queuer.Application.Tickets.Commands.RequestTicket
             Ticket ticket = new Ticket();
 
             int nextTicketNumber = 1;
-            if (tenant.Tickets.Any())
+            List<Ticket> tickets = tenant.Tickets.OrderByDescending(x => x.Created).ToList();
+
+            if (tickets.Any())
             {
-                nextTicketNumber = tenant.Tickets.Max(x => x.Number) + 1;
+                nextTicketNumber = tickets.First().Number + 1;
+
+                // Check max number for tenant
+                if (nextTicketNumber > tenant.MaxTicketNumber)
+                {
+                    nextTicketNumber = 1;
+                }
             }
 
             ticket.Number = nextTicketNumber;

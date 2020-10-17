@@ -13,7 +13,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TenantResolver } from './tenant/tenant.resolver';
 
 @NgModule({
   declarations: [AppComponent, NavMenuComponent],
@@ -35,7 +34,8 @@ import { TenantResolver } from './tenant/tenant.resolver';
         loadChildren: () =>
           import('./tenant/tenant.module').then((m) => m.TenantModule),
       },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
+      // TODO: 'test' => ''
+      { path: '**', pathMatch: 'full', redirectTo: 'test' },
     ]),
     BrowserAnimationsModule,
     ModalModule.forRoot(),

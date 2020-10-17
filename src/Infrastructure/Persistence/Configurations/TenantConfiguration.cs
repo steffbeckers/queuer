@@ -22,6 +22,12 @@ namespace Queuer.Infrastructure.Persistence.Configurations
 
             builder.Property(t => t.PhoneNumber)
                 .HasMaxLength(50);
+
+            builder.Property(t => t.CurrentTicketNumber)
+                .HasDefaultValue(1);
+
+            builder.Property(t => t.MaxTicketNumber)
+                .HasDefaultValue(99);
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Queuer.Infrastructure.Persistence;
 
 namespace Queuer.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201017152723_TicketAdded")]
+    partial class TicketAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -248,11 +250,6 @@ namespace Queuer.Infrastructure.Persistence.Migrations
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CurrentTicketNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
@@ -265,11 +262,6 @@ namespace Queuer.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("LogoURL")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("MaxTicketNumber")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(99);
 
                     b.Property<string>("Name")
                         .IsRequired()

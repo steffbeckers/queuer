@@ -1,10 +1,15 @@
-<div>Data from resolve</div>
-{{ tenant | json }}
-
-<div>Data from app state</div>
-{{ appState.tenant.value | json }}
-
-<div>Data from app state async</div>
-<ng-container *ngIf="appState.tenant | async as tenant2">
-  {{ tenant2 | json }}
+<ng-container *ngIf="appState.tenant | async as tenant">
+  <h1>{{ tenant.name }}</h1>
+  <div *ngIf="tenant.phoneNumber || tenant.email">
+    <a *ngIf="tenant.phoneNumber" [href]="'tel:' + tenant.phoneNumber">{{
+      tenant.phoneNumber
+    }}</a>
+    <span *ngIf="tenant.phoneNumber && tenant.email"> - </span>
+    <a *ngIf="tenant.email" [href]="'mailto:' + tenant.email">{{
+      tenant.email
+    }}</a>
+  </div>
+  <!-- TODO -->
+  <br />
+  <router-outlet></router-outlet>
 </ng-container>

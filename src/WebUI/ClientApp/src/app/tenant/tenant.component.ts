@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AppState } from '../app.state';
-import { TenantDto } from '../queuer-api';
 
 @Component({
   selector: 'app-tenant',
@@ -9,11 +7,11 @@ import { TenantDto } from '../queuer-api';
   styleUrls: ['./tenant.component.css'],
 })
 export class TenantComponent implements OnInit {
-  tenant: TenantDto;
+  // tenant: TenantDto;
 
-  constructor(public appState: AppState, public route: ActivatedRoute) {}
+  constructor(public appState: AppState) {}
 
   ngOnInit(): void {
-    this.tenant = this.route.snapshot.data['tenant'];
+    // this.tenant = this.route.snapshot.data['tenant'];
   }
 }

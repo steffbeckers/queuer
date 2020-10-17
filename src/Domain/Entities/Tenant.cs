@@ -13,11 +13,15 @@ namespace Queuer.Domain.Entities
         }
 
         public Guid Id { get; set; }
+
         public string Name { get; set; }
         public string Slug { get; set; }
         public string LogoURL { get; set; }
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
+
+        public int CurrentTicketNumber { get; set; }
+        public int MaxTicketNumber { get; set; }
 
         public ICollection<Ticket> Tickets { get; set; }
     }

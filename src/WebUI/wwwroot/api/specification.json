@@ -38,6 +38,38 @@
         }
       }
     },
+    "/api/Tickets/{id}": {
+      "get": {
+        "tags": [
+          "Tickets"
+        ],
+        "operationId": "Tickets_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TicketDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Tickets": {
       "post": {
         "tags": [
@@ -68,12 +100,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/api/TodoItems": {
@@ -436,6 +463,65 @@
   "components": {
     "schemas": {
       "TenantDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "slug": {
+            "type": "string",
+            "nullable": true
+          },
+          "logoURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "TicketDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "done": {
+            "type": "boolean"
+          },
+          "tenantId": {
+            "type": "string",
+            "format": "guid"
+          },
+          "tenant": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TenantDto2"
+              }
+            ]
+          }
+        }
+      },
+      "TenantDto2": {
         "type": "object",
         "additionalProperties": false,
         "properties": {

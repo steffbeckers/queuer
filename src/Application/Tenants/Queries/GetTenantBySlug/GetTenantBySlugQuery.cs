@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Queuer.Application.Common.Interfaces;
-using Queuer.Domain.Enums;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Linq;
+using Queuer.Application.Common.Interfaces;
 using System.Threading;
 using System.Threading.Tasks;
-using Queuer.Application.Tenants.Queries.GetTenantBySlug;
 
-namespace Queuer.Application.TodoLists.Queries.GetTodos
+namespace Queuer.Application.Tenants.Queries.GetTenantBySlug
 {
     public class GetTenantBySlugQuery : IRequest<TenantDto>
     {
@@ -31,8 +27,8 @@ namespace Queuer.Application.TodoLists.Queries.GetTodos
         public async Task<TenantDto> Handle(GetTenantBySlugQuery request, CancellationToken cancellationToken)
         {
             return await _context.Tenants
-                    .ProjectTo<TenantDto>(_mapper.ConfigurationProvider)
-                    .FirstOrDefaultAsync(x => x.Slug.ToLower() == request.Slug.ToLower(), cancellationToken);
+                .ProjectTo<TenantDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync(x => x.Slug.ToLower() == request.Slug.ToLower(), cancellationToken);
         }
     }
 }
